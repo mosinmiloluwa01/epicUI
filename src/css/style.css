@@ -1,0 +1,439 @@
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	line-height: 0.09375rem;
+	padding: 0;
+	margin: 0;
+  background-blend-mode: luminosity;
+  background-image: url(".././img/login4.jpg");
+  background-size: cover;
+}
+footer {
+  background-color: #f6f6f6;
+  background-image: url(".././img/login4.jpg");
+}
+header{
+  /* background-image: url(".././img/login4.jpg"); */
+	background-color: rgb(128,128,0,0.3);
+	min-height: 3.125rem;
+}
+header a{
+  float: right;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 1.5625rem 1rem;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+a{
+  text-decoration: none;
+}
+p{
+  display: inline-block
+}
+.column p{
+  display: inline-block;
+}
+.column1 p {
+  display: inline-block;
+  color: white;
+}
+.column1 a {
+  text-decoration: none;
+  color: white;
+}
+h3,h1,h2{
+  color: white;
+}
+/*credit: w3schools*/
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 12.5rem;
+  background-color: rgba(241,241,241,0.5); /* give grey transparent color. reference stack overflow*/
+  position: absolute;
+  height: 100%;
+  overflow: auto;
+  border-right: #ededed 3px solid;
+}
+
+.sidebar a {
+  display: block;
+  color: #2F4F4F;
+  text-decoration: none;
+  font-family: system-ui;
+  font-size: 1rem;
+  margin-left: 0;
+  padding: 1rem;
+  text-align: left;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+ 
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.sidebar-margin-top{
+	margin-top: 3.125rem;
+}
+
+div.content {
+  margin-left: 12.5rem;
+  padding: 0.00625rem 1rem;
+  height: auto;
+}
+.content-inner {
+  /* margin-left: 12.5rem; */
+  background:rgba(16, 16, 19, 0.6);
+  padding: 0.00925rem 1rem;
+  height: auto;
+  margin-top: 10px;
+}
+.mailcontent-inner {
+  /* margin-left: 12.5rem; */
+  background:rgba(63, 63, 65, 0.6);
+  padding: 0.00925rem 1rem;
+  height: 12.5rem;
+  margin-top: 10px;
+}
+.content-inner{
+  color: white;
+}
+.font-style{
+  color: #555;
+  font-weight: 100;
+  font-family: sans-serif;
+}
+@media screen and (max-width: 43.75rem) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left; text-align: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 25rem) {
+  .sidebar a {
+    text-align: left;
+    float: none;
+    padding: 0 0 0 0.4rem;
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 22.6875rem) {
+  .sidebar a {
+    text-align: left;
+    float: none;
+    padding: 0 0 0 0.2rem;
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 25.6875rem) {
+  .sidebar a {
+    text-align: left;
+    float: none;
+    padding: 0 0 0 0.2rem;
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 25.875rem) {
+  .sidebar a {
+    text-align: left;
+    float: none;
+    padding: 0 0.07rem 0.1rem 0.29rem;
+    font-size: 1rem;
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 43.75rem) {
+	.column{
+		min-width: 12.5rem;
+	}
+
+}
+@media screen and (max-width: 25rem) {
+	.column{
+		min-width: 15.5rem;
+	}
+
+}
+@media screen and (max-width: 320px) {
+	.column{
+		min-width: 15.5rem;
+	}
+
+}
+@media screen and (max-width: 43.75rem) {
+	.modal-content{
+		min-width: 12.5rem;
+	}
+
+}
+@media screen and (max-width: 25rem) {
+	.modal-content{
+		min-width: 15.5rem;
+	}
+
+}
+.button{
+  width: 1rem;
+}
+.full-col{
+  width: 100%;
+}
+.epic-title{
+	float: left;
+  font-size: 1.8rem;
+  font-family: Apple Chancery, cursive;
+}
+.column {
+  float: left;
+  width: 98%;
+  min-width: 12.25rem;
+  padding: 10px;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+}
+.column1 {
+  float: left;
+  width: 98%;
+  min-width: 12.25rem;
+  padding: 10px;
+  background-color: rgb(128,128,128,0.3);
+  display: flex;
+  justify-content: space-between;
+}
+.float-right{
+	float: right;
+}
+/* The Modal (background) credit: w3schools*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  border: 0.0625rem solid #888;
+  border-radius: 0.4rem;
+  width: 30%;
+  height: 30% 
+}
+.modal-content p{
+  color: black;
+  padding: 1.25rem;
+  font-size: 1.2rem;
+}
+.modal-header{
+  height:2rem;
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-top: 1.2rem;
+  margin-right: 1rem;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.close1 {
+  color: #aaa;
+  float: right;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-top: 1.2rem;
+  margin-right: 1rem;
+}
+
+.close1:hover,
+.close1:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.retract{
+  background-color: #3A3F44;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+.margin16-left{
+	margin-left: 1rem;
+	margin-top: 1rem; 
+}
+/* credit: w3schools*/
+input[type=text],input[type=email], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #0F52BA;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+/* Style the container */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.txtarea{
+  height:200px;
+  margin-bottom: 1rem;
+}
+.margin-bottom{
+  margin-bottom: 0.3rem;
+}
+.rsidebar {
+  display: block;
+  margin-top: 3.3rem;
+  height: 100%;
+  width: 13rem;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: black; /* give grey transparent color. reference stack overflow*/
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  /* background-image: url(".././img/login4.jpg"); */
+}
+
+.rsidebar a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-family: system-ui;
+  font-size: 1.5rem;
+  margin-left: 0;
+  padding: 1rem;
+  text-align: left;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.rsidebar a:hover {
+  color: #f1f1f1;
+  background-color: #aaa
+}
+
+.rsidebar .rclosebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.ropenbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.ropenbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+@media screen and (max-width: 370px) {
+  .rsidebar {padding-top: 15px; width: 0;}
+  .rsidebar a {font-size: 18px;}
+  .content-inner {margin-left: 0;}
+}
+
+@media screen and (max-width: 450px) {
+  .rsidebar {padding-top: 15px; width: 0;}
+  .rsidebar a {font-size: 18px;}
+  .content-inner {margin-left: 0;}
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75 {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  input[type=submit] {
+    width: 5rem;
+    margin-top: 0;
+  }
+}
