@@ -41,34 +41,25 @@ const createElements = (elements) => {
   column1.appendChild(messageBody);
 
   content.appendChild(row);
-  console.log(row);
 }
 
 
 window.onload = () => {
+  const value = document.cookie.split(';')
+  const token = value[0];
   fetch('http://localhost:5000/api/v2/messages',{
     method: 'GET',
     headers: new Headers({
       'content-type': 'application/json',
-      'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN0ZXZlbjFAZXBpYy5jb20iLCJpZCI6MiwiaWF0IjoxNTUzNjgyNzM1LCJleHAiOjE1NTM3NjkxMzV9.-EKQsF51v5F8qWQ6W6QLbMYjtA0mTfca_4qO7hwvfR8'
+      'Authorization': token,
     })
 })
-  .then(function(response) {
+  .then((response) => {
     return response.json();
-  }).then(function(data) {
-    console.log(data.data);
-    let output = `<div class="row">
-    <div class="column 1">`
+  }).then((data) => {
     msg = data.data
     msg.forEach((element) =>  {
     createElements(element);
-
-    // output += `
-    // <p><a href="openedmail.html">email: ${element.email}</a></p>
-    // <p class="font-style"><a href="openedmail.html">email: ${element.message}</p></a>`
     });
-    output += ` </div>
-    </div> `
-    console.log(output);
   }).catch(err => err.message);
 }

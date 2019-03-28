@@ -9,19 +9,20 @@
 <body>
 	<div class="container">
 		<h1>Epic Mail Login</h1>
+		<div class="invalid" id="error"></div>
 		<div class="login-item">
-			<form action = "inbox.html" class="form form-login">
+			<form action = "inbox.html" class="form form-login" name="loginForm">
 				<!--<div class="form form-login">-->
 					<div class="form-field">
 						<!-- <label><span>Username</span></label> -->
-						<input type="email" class="form-input" placeholder="Please input your email" required>
+						<input type="email" class="form-input" name="email" placeholder="Please input your email" required>
 					</div>
 					<div class="form-field">
 						<!-- <label ><span class="hidden">Password</span></label> -->
-						<input type="password" class="form-input" placeholder="Password" required>
+						<input type="password" name="password" class="form-input" placeholder="Password" required>
 					</div>
 					<div class="form-field">
-						<input type="submit" name="submit" value="login">
+						<input type="submit" name="submit" value="login" id="login">
 					</div>
 					<div class="form-field">
 					<a href="signup.html" class="margin-left">Create An Account</a>
@@ -31,5 +32,6 @@
 			</form>
 		</div>
 	</div>
+	<script src="../js/login.js"></script>
 </body>
 </html>
