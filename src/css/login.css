@@ -28,6 +28,11 @@ h1,h2{
   font-weight: 600;
 }
 
+.error {
+  margin-top: 0;
+  display: none;
+  color: red;
+}
 .container {
 	background:rgba(58,63,68,0.6);
   border-radius: 0.3125rem;
@@ -95,6 +100,15 @@ h1,h2{
   background-color: #197071;
 }
 .form-field {
+  display: flex;
+  margin-bottom: 1.8rem;
+}
+.form-field1 {
+  display: flex;
+  margin-bottom: .5rem;
+}
+.form-field2 {
+  margin-top: 1.5rem;
   display: flex;
   margin-bottom: 1.8rem;
 }

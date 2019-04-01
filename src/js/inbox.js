@@ -12,7 +12,7 @@ function openNav() {
   }
 
   //for fetch api
-// document.getElementById('inbox').addEventListener('click',getInboxMessages);
+// elements refer to data gotten from db (ie when u call the function , the data u pass in)
 const createElements = (elements) => {
   const row = document.createElement("div");
   const column1 = document.createElement("div");
@@ -34,19 +34,30 @@ const createElements = (elements) => {
   sender.className = ('sender-column');
   messageBody.classList.add('message-column', 'font-style');
 
+  //to call openmail function when clicked
+  column1.addEventListener('click', openMail);
+  //to give the id a value so u can use it to get event.target.id
+  column1.setAttribute('id',`${id}`);
+
   // append child element to parent element
   row.appendChild(column1);
   sender.appendChild(messageLink);
   column1.appendChild(sender);
   column1.appendChild(messageBody);
-
   content.appendChild(row);
 }
 
+// function to open a mail and get the id of the row clicked
+const openMail = (event) => {console.log(event.target.id);
+  const msgId = event.target.id; 
+  localStorage.setItem('messageId', `${msgId}`);
+  window.location.href = '../html/openedmail.html';
+}
 
 window.onload = () => {
   const value = document.cookie.split(';')
-  const token = value[0];
+  const newValue = value[0].split('=');
+  const token = newValue[1]; console.log(token);
   fetch('http://localhost:5000/api/v2/messages',{
     method: 'GET',
     headers: new Headers({
