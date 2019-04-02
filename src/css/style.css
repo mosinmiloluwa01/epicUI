@@ -110,7 +110,6 @@ div.content {
   color: white;
 }
 .font-style{
-  color: #555;
   font-weight: 100;
   font-family: sans-serif;
 }
@@ -146,9 +145,13 @@ div.content {
 }
 .sender-column{
   width: 40%;
+  pointer-events: none;
+  user-select: none;
 }
 .message-column{
   width: 60%;
+  pointer-events: none;
+  user-select: none;
 }
 .float-right{
 	float: right;
