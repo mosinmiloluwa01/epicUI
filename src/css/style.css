@@ -1,7 +1,6 @@
 body{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1rem;
-	line-height: 0.09375rem;
 	padding: 0;
 	margin: 0;
   background-blend-mode: luminosity;
@@ -25,6 +24,31 @@ header a{
   padding: 1.5625rem 1rem;
   text-decoration: none;
   font-size: 1.25rem;
+}
+.invalid {
+  display: none;
+  margin: 10px auto 0;
+  text-align: center;
+  background-color:#ff3f34;
+  width: 80%;
+  padding: 10px 0 10px;
+  font-weight: 600;
+}
+
+.success {
+  display: none;
+  margin: 10px auto 0;
+  text-align: center;
+  background-color:green;
+  width: 80%;
+  padding: 10px 0 10px;
+  font-weight: 600;
+}
+
+.error {
+  margin-top: 0;
+  display: none;
+  color:#ff3f34;
 }
 a{
   text-decoration: none;
