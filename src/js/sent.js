@@ -14,6 +14,7 @@ function openNav() {
   //for fetch api
 // elements refer to data gotten from db (ie when u call the function , the data u pass in)
 const createElements = (elements) => {
+    console.log(elements);
   const row = document.createElement("div");
   const column1 = document.createElement("div");
   const sender = document.createElement("p");
@@ -22,14 +23,13 @@ const createElements = (elements) => {
 
   // destructure to get data from db
   const {id, email, message} = elements;
-
   // concatenate first name and last name to display sender name
   sender.innerText = `${elements.first_name} ${elements.last_name}`;
   // set message content to the element for display 
-  messageBody.innerText = message + '...';
-  if(message.length > 30){
+  messageBody.innerText = message + '...';console.log(messageBody)
+  if(message.length >30){
    const msg = message.slice(0,30) + '...'
-   messageBody.innerHTML = msg;
+   messageBody.innerText = msg;console.log(messageBody)
   }
   
   // add class name
@@ -55,14 +55,14 @@ const createElements = (elements) => {
 const openMail = (event) => {console.log(event.target.id);
   const msgId = event.target.id; 
   localStorage.setItem('messageId', `${msgId}`);
-  window.location.href = '../html/openedmail.html';
+  window.location.href = '../html/opensentmail.html';
 }
 
 window.onload = () => {
   const value = document.cookie.split(';')
   const newValue = value[0].split('=');
-  const token = newValue[1];
-  fetch('http://localhost:5000/api/v2/messages',{
+  const token = newValue[1]; console.log(token);
+  fetch('http://localhost:5000/api/v2/messages/sent',{
     method: 'GET',
     headers: new Headers({
       'content-type': 'application/json',
@@ -74,7 +74,7 @@ window.onload = () => {
   }).then((data) => {
     msg = data.data
     console.log(msg.length);
-    msg.forEach((element) =>  {
+    msg.forEach((element) => {
     createElements(element);
     });
   }).catch(err => err.message);
