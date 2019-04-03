@@ -146,6 +146,7 @@ div.content {
 
 .button{
   width: 1rem;
+  color: blue;
 }
 .full-col{
   width: 100%;
@@ -174,14 +175,18 @@ div.content {
   justify-content: flex-start;
 }
 .sender-column{
-  width: 40%;
+  width: 30%;
   pointer-events: none;
   user-select: none;
 }
 .message-column{
-  width: 60%;
+  width: 50%;
   pointer-events: none;
   user-select: none;
+}
+.delete-column{
+  width: 20%;
+  font-size: 24px;
 }
 .float-right{
 	float: right;

@@ -19,6 +19,7 @@ const createElements = (elements) => {
   const sender = document.createElement("p");
   const messageBody = document.createElement("p");
   const messageLink = document.createElement("a");
+  const DeleteLink = document.createElement("button");
 
   // destructure to get data from db
   const {id, email, message} = elements;
@@ -30,6 +31,7 @@ const createElements = (elements) => {
   if(message.length > 30){
    const msg = message.slice(0,30) + '...'
    messageBody.innerHTML = msg;
+   DeleteLink.innerHTML = 'X';
   }
   
   // add class name
@@ -37,27 +39,52 @@ const createElements = (elements) => {
   column1.className = ('column1');
   sender.className = ('sender-column');
   messageBody.classList.add('message-column', 'font-style');
+  DeleteLink.classList.add('delete-column', 'button');
+
 
   //to call openmail function when clicked
   column1.addEventListener('click', openMail);
+
+  DeleteLink.addEventListener('click', deleteMail);
   //to give the id a value so u can use it to get event.target.id
   column1.setAttribute('id',`${id}`);
-
+  DeleteLink.setAttribute('id',`${id}`); 
   // append child element to parent element
   row.appendChild(column1);
   sender.appendChild(messageLink);
   column1.appendChild(sender);
   column1.appendChild(messageBody);
+  column1.appendChild(DeleteLink);
   content.appendChild(row);
 }
 
 // function to open a mail and get the id of the row clicked
-const openMail = (event) => {console.log(event.target.id);
+const openMail = (event) => {
   const msgId = event.target.id; 
   localStorage.setItem('messageId', `${msgId}`);
   window.location.href = '../html/openedmail.html';
 }
-
+const deleteMail = (event) => {
+  const value = document.cookie.split(';')
+  const newValue = value[0].split('=');
+  const token = newValue[1];
+  const msgId = localStorage.getItem('messageId')
+  fetch(`http://localhost:5000/api/v2/messages/${msgId}`,{
+    method: 'DELETE',
+    headers: new Headers({
+      'content-type': 'application/json',
+      'Authorization': token,
+    })
+  })
+  .then((response) => {
+    return response.json(); 
+  })
+  .then((data) => {
+    console.log(data);
+    window.location.href = '../html/inbox.html'
+    event.stopPropagation();
+  });
+}
 window.onload = () => {
   const value = document.cookie.split(';')
   const newValue = value[0].split('=');
@@ -73,7 +100,6 @@ window.onload = () => {
     return response.json();
   }).then((data) => {
     msg = data.data
-    console.log(msg.length);
     msg.forEach((element) =>  {
     createElements(element);
     });
