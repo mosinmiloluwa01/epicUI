@@ -13,7 +13,7 @@ footer {
 }
 header{
   /* background-image: url(".././img/login4.jpg"); */
-	background-color: rgb(128,128,0,0.3);
+	background-color: rgb(128,128,0,0.7);
 	min-height: 3.125rem;
 }
 header a{
@@ -62,6 +62,9 @@ p{
 .column1 p {
   display: inline-block;
   color: white;
+}
+.column1:hover {
+  background-color: grey;
 }
 .column1 a {
   text-decoration: none;
@@ -129,6 +132,9 @@ div.content {
   padding: 0.00925rem 1rem;
   height: 12.5rem;
   margin-top: 10px;
+}
+.mailcontent-inner p {
+  overflow-wrap: break-word;
 }
 .content-inner{
   color: white;
