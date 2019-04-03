@@ -22,24 +22,35 @@
 <div class="content" id="main">
   <div class="content-inner">
     <button class="ropenbtn" onclick="openNav()">☰</button>
-<!-- <form> -->
+<form id="compose">
+  <div class="invalid" id="error"></div>
+  <div class="success" id="success"></div>
     <div class="row">
       <h1>Compose Mail</h1>
-      <div class="full-col margin-bottom">
-        <input type="text" id="to" placeholder="To:" required>
+      <div class="col-75 margin-bottom">
+        <input type="text" name="to" placeholder="To:">
       </div>
+      <p class="error"></p>
     </div>
     <div class="row">
-      <div class="full-col">
-        <textarea id="subject" name="subject" placeholder="Compose mail here" class="txtarea"></textarea><br><br>
-      </div>
+        <div class="col-75 margin-bottom">
+          <input type="text" name="subject" placeholder="Subject:">
+        </div>
+        <p class="error"></p>
     </div>
     <div class="row">
-      <input type="submit" value="Send" id="open-feedback" class="margin16-left">
+      <div class="col-75">
+        <textarea  name="message" placeholder="Compose mail here" class="txtarea"></textarea><br><br>
+      </div>
+      <p class="error"></p>
+    </div>
+    <div class="row">
+      <input type="submit" value="Send" id="" class="margin16-left">
       <input type="submit" value="Save" id="save-feedback" class="margin16-left">
     </div>
-  <!-- </form> -->
   </div>
+</form>
+</div>
 </div>
   
         
@@ -67,5 +78,6 @@
 
 </div>
 <script type="text/javascript" src="../js/compose.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
 </body>
 </html>

@@ -26,7 +26,11 @@ const createElements = (elements) => {
   // concatenate first name and last name to display sender name
   sender.innerText = `${elements.first_name} ${elements.last_name}`;
   // set message content to the element for display 
-  messageBody.innerText = message;
+  messageBody.innerText = message + '...';console.log(messageBody)
+  if(message.length >5){
+   const msg = message.slice(0,5) + '...'
+   messageBody.innerText = msg;console.log(messageBody)
+  }
   
   // add class name
   row.className = ('row');

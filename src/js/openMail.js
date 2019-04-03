@@ -23,14 +23,17 @@ const createElements = (elements) => {
 
     // give values to the elements
     const {created_on, email, subject, message} = elements;
-    const dateValue = created_on.split('T');
-    const d = dateValue[1].split('.');
-    const date = `${dateValue[0]} ${d[0]}`;
+    console.log(created_on);
+    const date = new Date(created_on);
+
+    // const dateValue = created_on.split('T');console.log(created_on);
+    // const d = dateValue[1].split('.');
+    // const date = `${dateValue[0]} ${d[0]}`;
     h2.innerText = subject; 
-    dateContent.innerText = date;
+    dateContent.innerText = date.toDateString();
   
     h2.innerText = subject; 
-    dateContent.innerText = created_on;
+    //dateContent.innerText = created_on;
     fromContent.innerText = `from: ${email}`;
     messageContent.innerText = message;
 
