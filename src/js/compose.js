@@ -1,18 +1,20 @@
 // get compose form from document.forms and extract the fields
 const {compose} = document.forms;
-const {to, subject, message} = compose.elements;
+const {to, subject, message, sent, draft} = compose.elements;
 //to display errors
 let error = document.getElementById("error");
 let inputError = document.getElementsByClassName("error");
 let success = document.getElementById("success");
 
 const composeMail = (event) => {
+  console.log(event);
   event.preventDefault();
   // get value from the compose form
   const composeMailInfo = {
     email: to.value,
     subject: subject.value, 
     message: message.value,
+    type: event.target.name,
   }
   const closeErrorMessage = () => {
     error.style.display = "none";
@@ -64,7 +66,12 @@ fetch('http://localhost:5000/api/v2/messages', {
     if (result.status == 201){
     success.style.display = "block";
     // to append the message coming from the api route in the p tag that has a class error on top of the form
+    if(event.target.name == 'draft'){
+      success.innerText = 'Message Saved';
+    }
+    else{
     success.innerText = 'Message Sent';
+    }
     to.value = '';
     subject.value = '';
     message.value = '';
@@ -72,16 +79,18 @@ fetch('http://localhost:5000/api/v2/messages', {
     }
   })
 }
+
 const clearError = (event) => {
   // to pick the parent element and the next sibling element i.e pick the p tag that is the next sibling to the div (containig the input) when its focused
   // ie pick <p class=error> that is next to inputtag.addEventListener('focus', clearError) eg firstName.addEventListener('focus', clearError);;
   event.target.parentElement.nextElementSibling.style.display = "none";
 }
-compose.addEventListener('submit', composeMail);
+// compose.addEventListener('submit', composeMail);
 to.addEventListener('focus', clearError);
 subject.addEventListener('focus', clearError);
 message.addEventListener('focus', clearError);
-
+sent.addEventListener('click', composeMail)
+draft.addEventListener('click', composeMail)
 
 function openNav() {
   document.getElementById("responsive-sidebar").style.width = "250px";
