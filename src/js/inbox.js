@@ -1,5 +1,6 @@
 let main = document.getElementById("main");
 let content = document.getElementById("content");
+let success = document.getElementById("success");
 // for the responsive side bar
 function openNav() {
     document.getElementById("responsive-sidebar").style.width = "250px";
@@ -19,7 +20,7 @@ const createElements = (elements) => {
   const sender = document.createElement("p");
   const messageBody = document.createElement("p");
   const messageLink = document.createElement("a");
-  const DeleteLink = document.createElement("button");
+  const DeleteLink = document.createElement("i");
 
   // destructure to get data from db
   const {id, email, message} = elements;
@@ -31,7 +32,6 @@ const createElements = (elements) => {
   if(message.length > 30){
    const msg = message.slice(0,30) + '...'
    messageBody.innerHTML = msg;
-   DeleteLink.innerHTML = 'X';
   }
   
   // add class name
@@ -39,7 +39,7 @@ const createElements = (elements) => {
   column1.className = ('column1');
   sender.className = ('sender-column');
   messageBody.classList.add('message-column', 'font-style');
-  DeleteLink.classList.add('delete-column', 'button');
+  DeleteLink.classList.add('delete-column', 'fas', 'fa-trash-alt');
 
 
   //to call openmail function when clicked
@@ -64,11 +64,15 @@ const openMail = (event) => {
   localStorage.setItem('messageId', `${msgId}`);
   window.location.href = '../html/openedmail.html';
 }
+const closeSuccessMessage = () => {
+  success.style.display = "none";
+}
 const deleteMail = (event) => {
+  event.stopPropagation();
   const value = document.cookie.split(';')
   const newValue = value[0].split('=');
   const token = newValue[1];
-  const msgId = localStorage.getItem('messageId')
+  const msgId = event.target.id;
   fetch(`http://localhost:5000/api/v2/messages/${msgId}`,{
     method: 'DELETE',
     headers: new Headers({
@@ -81,8 +85,10 @@ const deleteMail = (event) => {
   })
   .then((data) => {
     console.log(data);
+    success.style.display = "block";
+    success.innerText = 'Message Deleted';
+    setTimeout(closeSuccessMessage,4000);
     window.location.href = '../html/inbox.html'
-    event.stopPropagation();
   });
 }
 window.onload = () => {

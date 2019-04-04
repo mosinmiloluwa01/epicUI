@@ -134,7 +134,7 @@ div.content {
   margin-top: 10px;
 }
 .mailcontent-inner p {
-  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .content-inner{
   color: white;
@@ -187,6 +187,10 @@ div.content {
 .delete-column{
   width: 20%;
   font-size: 24px;
+  margin-top: 0.8rem;
+}
+.delete-column:hover{
+  color: #ff3f34;
 }
 .float-right{
 	float: right;
