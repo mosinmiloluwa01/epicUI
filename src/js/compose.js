@@ -57,14 +57,19 @@ fetch('http://localhost:5000/api/v2/messages', {
     }
     if (result.status == 403 || result.status == 404){
       error.style.display = "block";
-      setTimeout(closeErrorMessage,4000);
       // to append the message coming from the api route in the p tag that has a class error on top of the form
       error.innerText = result.message;
+      setTimeout(closeErrorMessage,4000);
     }
+    if (result.status == 201){
     success.style.display = "block";
-      setTimeout(closeSuccessMessage,4000);
-      // to append the message coming from the api route in the p tag that has a class error on top of the form
-      success.innerText = 'Message Sent';
+    // to append the message coming from the api route in the p tag that has a class error on top of the form
+    success.innerText = 'Message Sent';
+    to.value = '';
+    subject.value = '';
+    message.value = '';
+    setTimeout(closeSuccessMessage,4000);
+    }
   })
 }
 const clearError = (event) => {
@@ -87,40 +92,3 @@ function closeNav() {
   document.getElementById("responsive-sidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
-// // Get the modal
-// let feedbakModal = document.getElementById('feedbackModal');
-
-// // Get the button that opens the modal
-// let openFeedback = document.getElementById("open-feedback");
-
-// // Get the <span> element that closes the modal
-// let span = document.getElementsByClassName("close")[0];
-// let span1 = document.getElementsByClassName("close1")[0];
-
-// let retract = document.getElementById("retract");
-
-// let save = document.getElementById("saveModal");
-// let saveFeedback = document.getElementById("save-feedback");
-
-// // When the user clicks on the button, open the modal 
-// openFeedback.onclick = function() {
-//   feedbakModal.style.display = "block";
-// }
-
-// // When the user clicks on <span> (x), close the modal
-// let timeOut = 4000;
-
-// span.onclick = function() {
-//   feedbakModal.style.display = "none";
-// }
-// span1.onclick = function() {
-//   save.style.display = "none";
-// }
-
-// retract.onclick= function(){
-// 	feedbakModal.style.display = "none";
-// }
-
-// saveFeedback.onclick = function(){
-// 	save.style.display = "block"
-// }

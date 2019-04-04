@@ -18,7 +18,6 @@ const createElements = (elements) => {
     const fromContent =  document.createElement("p");
     const messageContainer =  document.createElement("div");
     const messageRow =  document.createElement("div");
-    const messageCol =  document.createElement("div");
     const messageContent =  document.createElement("p");
 
     // give values to the elements
@@ -49,7 +48,6 @@ const createElements = (elements) => {
 
     messageContainer.className = ('mailcontent-inner');
     messageRow.className = ('row');
-    messageCol.className = ('col-75');
 
     //append child to parent
     contentInner.appendChild(h2);
@@ -64,8 +62,7 @@ const createElements = (elements) => {
     fromCol.appendChild(fromContent);
     
     messageContainer.appendChild(messageRow);
-    messageRow.appendChild(messageCol);
-    messageCol.appendChild(messageContent);
+    messageRow.appendChild(messageContent);
 
 }
 
