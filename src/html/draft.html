@@ -3,52 +3,35 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>EPIC Mail | Inbox</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<title>EPIC Mail | Draft</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
   <header>
-  <a href="login.html">Logout</a>
+  <a href="#" onclick="logout()">Logout</a>
   <a href="#" class="epic-title">EPIC Mail</a>
   </header>
 
-  <div id="responsive-sidebar" class="rsidebar">
+<div id="responsive-sidebar" class="rsidebar">
   <a href="javascript:void(0)" class="rclosebtn" onclick="closeNav()">×</a>
   <a href="composemail.html" ><img src="../img/compose.png">Compose</button>
-  <a href="inbox.html" ><img src="../img/inbox.png">Inbox</a>
-  <a href="sentmail.html" ><img src="../img/sent.png">Sent</a>
-  <a href="draft.html" ><img src="../img/draft.png">Draft</a>
+  <a href="inbox.html"><img src="../img/inbox.png"> Inbox</a>
+  <a href="sentmail.html"><img src="../img/sent.png"> Sent</a>
+  <a href="draft.html"><img src="../img/draft.png"> Draft</a>
 </div>
 <div class="content" id="main">
-<div class="content-inner">
-<button class="ropenbtn" onclick="openNav()">☰</button>
+  <div class="content-inner" id="content">
+    <button class="ropenbtn" onclick="openNav()">☰</button>
+    <div class="success" id="success"></div>
 <h1>Draft</h1>
-<div class="row">
-  <div class="column1" >
-    <p>Owoso Sinmilola</p>
-    <p><a href="composemail.html">Test Email</p></a>
-    <input type="submit" value="delete" id="open-draft" >
-  </div>
-</div><br>
-<div class="row">
-  <div class="column1" >
-    <p>Adelanwa Adeniyi</p>
-    <p><a href="composemail.html">Test Email</p></a>
-    <input type="submit" value="delete" id="open-draft">
-  </div>
 </div>
 </div>
-</div>    
+  
+        
 </div>
-<div id="draftModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-    <span class="close">&times;</span>
-    </div>
-    <p>Email deleted.</p> 
-  </div>
 
-</div>
 <script type="text/javascript" src="../js/draft.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
 </body>
 </html>
