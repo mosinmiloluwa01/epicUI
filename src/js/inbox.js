@@ -72,6 +72,8 @@ const deleteMail = (event) => {
   const value = document.cookie.split(';')
   const newValue = value[0].split('=');
   const token = newValue[1];
+  
+  // pick the target id from clickin the delete icon
   const msgId = event.target.id;
   fetch(`http://localhost:5000/api/v2/messages/${msgId}`,{
     method: 'DELETE',
@@ -84,7 +86,6 @@ const deleteMail = (event) => {
     return response.json(); 
   })
   .then((data) => {
-    console.log(data);
     success.style.display = "block";
     success.innerText = 'Message Deleted';
     setTimeout(closeSuccessMessage,4000);
