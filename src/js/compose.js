@@ -1,5 +1,6 @@
 // get compose form from document.forms and extract the fields
 const {compose} = document.forms;
+//sent and draft are buttons
 const {to, subject, message, sent, draft} = compose.elements;
 //to display errors
 let error = document.getElementById("error");
@@ -7,7 +8,7 @@ let inputError = document.getElementsByClassName("error");
 let success = document.getElementById("success");
 
 const composeMail = (event) => {
-  console.log(event);
+  if(!localStorage.getItem('existingDraftId')){
   event.preventDefault();
   // get value from the compose form
   const composeMailInfo = {
@@ -40,7 +41,7 @@ const showErrors = (errors) => {
 }
 const value = document.cookie.split(';')
 const newValue = value[0].split('=');
-const token = newValue[1]; console.log(token);
+const token = newValue[1];
 fetch('http://localhost:5000/api/v2/messages', {
     method:'POST',
     headers: new Headers({
@@ -79,18 +80,115 @@ fetch('http://localhost:5000/api/v2/messages', {
     }
   })
 }
+}
 
 const clearError = (event) => {
   // to pick the parent element and the next sibling element i.e pick the p tag that is the next sibling to the div (containig the input) when its focused
   // ie pick <p class=error> that is next to inputtag.addEventListener('focus', clearError) eg firstName.addEventListener('focus', clearError);;
   event.target.parentElement.nextElementSibling.style.display = "none";
 }
+
+const saveDraftAgain = () => {
+const value = document.cookie.split(';')
+const newValue = value[0].split('=');
+const token = newValue[1];
+const msgId = localStorage.getItem('existingDraftId');
+  const userInfo = {
+    email: to.value,
+    subject: subject.value, 
+    message: message.value,
+    type: 'draft',
+  }
+  const option = {
+    method: 'PUT',
+      headers: new Headers({
+        'content-type': 'application/json',
+        'Authorization': token,
+        }),
+      body: JSON.stringify(userInfo) 
+  }
+  
+  fetch(`http://localhost:5000/api/v2/messages/${msgId}/draft`, option)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    to.value = '';
+    subject.value = '';
+    message.value = '';
+    localStorage.removeItem('existingDraftId');
+  }).catch(err => err.message);
+}
+const sendDraftMessage = () => {
+const value = document.cookie.split(';')
+const newValue = value[0].split('=');
+const token = newValue[1];  
+const msgId = localStorage.getItem('existingDraftId');
+const userInfo = {
+  email: to.value,
+  subject: subject.value, 
+  message: message.value,
+  type: 'sent',
+}
+const option = {
+  method: 'PUT',
+    headers: new Headers({
+      'content-type': 'application/json',
+      'Authorization': token,
+      }),
+    body: JSON.stringify(userInfo) 
+}
+fetch(`http://localhost:5000/api/v2/messages/${msgId}/draft`, option)
+.then((response) => {
+  return response.json();
+})
+.then((data) => {
+  localStorage.removeItem('existingDraftId')
+  success.innerText = 'Message Saved';
+}).catch(err => err.message);
+}
+
+window.onload = () => {
+    if(localStorage.getItem('existingDraftId')){
+      const msgId = localStorage.getItem('existingDraftId');
+      const value = document.cookie.split(';')
+      const newValue = value[0].split('=');
+      const token = newValue[1];
+      
+      const retrieveData = {
+        method: 'GET',
+          headers: new Headers({
+            'content-type': 'application/json',
+            'Authorization': token,
+            })
+      }
+      fetch(`http://localhost:5000/api/v2/messages/${msgId}/draft`, retrieveData)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+       to.value = data.data.email;
+       subject.value = data.data.subject;
+       message.value = data.data.message;
+       localStorage.setItem('messageType',data.data.message_type)
+      }).catch(err => err.message);
+
+  if (event.target.name == 'sent' &&  localStorage.getItem('existingDraftId')){ 
+    sent.addEventListener('click', sendDraftMessage);
+  }
+  if (localStorage.getItem('messageType') == 'draft' &&  localStorage.getItem('existingDraftId')){ 
+    draft.addEventListener('click', saveDraftAgain);
+  }
+  
+}
+}
+
 // compose.addEventListener('submit', composeMail);
 to.addEventListener('focus', clearError);
 subject.addEventListener('focus', clearError);
 message.addEventListener('focus', clearError);
-sent.addEventListener('click', composeMail)
-draft.addEventListener('click', composeMail)
+sent.addEventListener('click', composeMail);
+draft.addEventListener('click', composeMail);
 
 function openNav() {
   document.getElementById("responsive-sidebar").style.width = "250px";

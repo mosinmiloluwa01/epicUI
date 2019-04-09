@@ -148,6 +148,23 @@ div.content {
   width: 1rem;
   color: blue;
 }
+.groupbutton{
+  background-color: teal;
+  color: white;
+  border: none;
+  width: auto;
+  height:auto;
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.span{
+  font-size: 12px;
+  vertical-align: 18%;
+}
+
 .full-col{
   width: 100%;
 }
