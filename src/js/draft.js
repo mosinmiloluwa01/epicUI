@@ -7,7 +7,6 @@ const createElements = (elements) => {
   const column1 = document.createElement("div");
   const sender = document.createElement("p");
   const messageBody = document.createElement("p");
-  const messageLink = document.createElement("a");
   const DeleteLink = document.createElement("i");
 
   // destructure to get data from db
@@ -39,7 +38,6 @@ const createElements = (elements) => {
   DeleteLink.setAttribute('id',`${id}`); 
   // append child element to parent element
   row.appendChild(column1);
-  sender.appendChild(messageLink);
   column1.appendChild(sender);
   column1.appendChild(messageBody);
   column1.appendChild(DeleteLink);
@@ -66,10 +64,10 @@ window.onload = () => {
     });
   }).catch(err => err.message);
 }
-
+//open draft on compose.html that calls windows.onload if local storage exist
 const openDraftMail = (event) => {
   const msgId = event.target.id; 
-  localStorage.setItem('messageId', `${msgId}`);
+  localStorage.setItem('existingDraftId', `${msgId}`);
   window.location.href = '../html/composemail.html';
 }
 const closeSuccessMessage = () => {
