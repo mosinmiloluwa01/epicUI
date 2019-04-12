@@ -19,13 +19,14 @@ const createElements = (elements) => {
   
 const saveEmail = () => {
       localStorage.setItem('groupEmail', group_email);
+      window.location.href = '../html/groupcomposemail.html';
  }
 groupCompose.addEventListener('click', saveEmail);
 
 
   // add class name
   row.className = ('row');
-  column1.className = ('column1');
+  column1.className = ('column11');
   useremail.classList.add('message-column', 'font-style');
   DeleteLink.classList.add('delete-column', 'fas', 'fa-trash-alt');
 

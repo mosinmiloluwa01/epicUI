@@ -1,6 +1,5 @@
 const {createuser} = document.forms;
 const {user, adduser} = createuser.elements;
-console.log(createuser);
 let main = document.getElementById("main");
 let content = document.getElementById("content");
 let error = document.getElementById("error");

@@ -30,7 +30,7 @@ const createElements = (elements) => {
   messageBody.innerText = message + '...';
   if(message.length >30){
       const msg = message.slice(0,30) + '...'
-      messageBody.innerText = msg;console.log(messageBody)
+      messageBody.innerText = msg;
     }
     
     // add class name
@@ -82,7 +82,7 @@ const deleteMail = (event) => {
     const value = document.cookie.split(';')
     const newValue = value[0].split('=');
     const token = newValue[1];
-    const msgId = event.target.id;console.log(msgId);
+    const msgId = event.target.id;
     fetch(`http://localhost:5000/api/v2/messages/draft/${msgId}`,{
       method: 'DELETE',
       headers: new Headers({
