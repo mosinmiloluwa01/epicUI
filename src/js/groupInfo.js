@@ -23,7 +23,7 @@ window.onload = () => {
       return response.json();
     })
     .then((data) => {
-        msg = data.data; console.log(msg);
+        msg = data.data;
         groupName.innerText = msg[0].group_name;
         localStorage.setItem('groupEmail', msg[0].group_email)
       }).catch(err => err.message);

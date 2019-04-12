@@ -1,3 +1,7 @@
+const value = document.cookie.split(';')
+const newValue = value[0].split('=');
+const token = newValue[1];
+
 let main = document.getElementById("main");
 let content = document.getElementById("content");
 let success = document.getElementById("success");
@@ -22,9 +26,9 @@ const createElements = (elements) => {
   groupname.innerText = group_name;
   // set message content to the element for display 
   groupemail.innerText = group_email;
-  
-  column1.setAttribute('id',`${id}`);
+
   column1.addEventListener('click', openGroup);
+  DeleteLink.addEventListener('click', deleteGroup);
   // add class name
   row.className = ('row');
   column1.className = ('column1');
@@ -44,16 +48,42 @@ const createElements = (elements) => {
   content.appendChild(row);
 }
 
+const closeSuccessMessage = () => {
+  success.style.display = "none";
+}
+
 const openGroup = (event) => {
     const grpId = event.target.id; 
-  localStorage.setItem('groupId', `${grpId}`); console.log(localStorage.getItem('groupId'));
+  localStorage.setItem('groupId', `${grpId}`);
   window.location.href = '../html/groupDetails.html';
 }
 
+const deleteGroup = (event) => {
+  event.stopPropagation();
+  // pick the target id from clickin the delete icon
+  const grpId = event.target.id;
+  fetch(`http://localhost:5000/api/v2/groups/${grpId}`,{
+    method: 'DELETE',
+    headers: new Headers({
+      'content-type': 'application/json',
+      'Authorization': token,
+    })
+  })
+  .then((response) => {
+    return response.json(); 
+  })
+  .then((data) => {
+    if (data) {
+    success.style.display = "block";
+    success.innerText = 'Group Deleted';
+    setTimeout(closeSuccessMessage,4000);
+    }
+    window.location.href = '../html/group.html'
+    
+  });
+}
+
 window.onload = () => {
-  const value = document.cookie.split(';')
-  const newValue = value[0].split('=');
-  const token = newValue[1];
   fetch('http://localhost:5000/api/v2/groups',{
     method: 'GET',
     headers: new Headers({

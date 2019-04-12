@@ -63,10 +63,18 @@ p{
   display: inline-block;
   color: white;
 }
+.column11 p {
+  display: inline-block;
+  color: white;
+}
 .column1:hover {
   background-color: grey;
 }
 .column1 a {
+  text-decoration: none;
+  color: white;
+}
+.column11 a {
   text-decoration: none;
   color: white;
 }
@@ -183,6 +191,16 @@ div.content {
   justify-content: space-between;
 }
 .column1 {
+  float: left;
+  width: 98%;
+  min-width: 12.25rem;
+  padding: 10px;
+  background-color: rgb(128,128,128,0.3);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.column11 {
   float: left;
   width: 98%;
   min-width: 12.25rem;
@@ -451,6 +469,10 @@ input[type=submit] {
     flex-direction: column;
     height: 4.375rem;
   } 
+  .column11 {
+    flex-direction: column;
+    height: 4.375rem;
+  } 
   .sender-column {
     width: 100%;
   }
@@ -464,6 +486,10 @@ input[type=submit] {
     display: inline-block;
   }
   .column1 {
+    flex-direction: column;
+    height: 4.375rem;
+  } 
+  .column11 {
     flex-direction: column;
     height: 4.375rem;
   } 
@@ -483,6 +509,10 @@ input[type=submit] {
     flex-direction: column;
     height: 4.375rem;
   } 
+  .column11 {
+    flex-direction: column;
+    height: 4.375rem;
+  } 
   .sender-column {
     width: 100%;
   }
@@ -496,6 +526,10 @@ input[type=submit] {
     display: inline-block;
   }
   .column1 {
+    flex-direction: column;
+    height: 4.375rem;
+  } 
+  .column11 {
     flex-direction: column;
     height: 4.375rem;
   } 

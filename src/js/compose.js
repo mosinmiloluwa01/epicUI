@@ -6,10 +6,12 @@ const {to, subject, message, sent, draft} = compose.elements;
 let error = document.getElementById("error");
 let inputError = document.getElementsByClassName("error");
 let success = document.getElementById("success");
+let draftId = localStorage.getItem('existingDraftId');
 
 const composeMail = (event) => {
-  if(!localStorage.getItem('existingDraftId')){
+  if(!draftId) {
   event.preventDefault();
+
   // get value from the compose form
   const composeMailInfo = {
     email: to.value,
@@ -79,7 +81,13 @@ fetch('http://localhost:5000/api/v2/messages', {
     setTimeout(closeSuccessMessage,4000);
     }
   })
-}
+  }
+  else {
+    if (event.target.name == 'saveDraft') {
+      saveDraftAgain();
+    }
+    sendDraftMessage();
+  }
 }
 
 const clearError = (event) => {
@@ -92,7 +100,7 @@ const saveDraftAgain = () => {
 const value = document.cookie.split(';')
 const newValue = value[0].split('=');
 const token = newValue[1];
-const msgId = localStorage.getItem('existingDraftId');
+
   const userInfo = {
     email: to.value,
     subject: subject.value, 
@@ -108,7 +116,7 @@ const msgId = localStorage.getItem('existingDraftId');
       body: JSON.stringify(userInfo) 
   }
   
-  fetch(`http://localhost:5000/api/v2/messages/${msgId}/draft`, option)
+  fetch(`http://localhost:5000/api/v2/messages/${draftId}/draft`, option)
   .then((response) => {
     return response.json();
   })
@@ -116,14 +124,13 @@ const msgId = localStorage.getItem('existingDraftId');
     to.value = '';
     subject.value = '';
     message.value = '';
-    localStorage.removeItem('existingDraftId');
+    localStorage.clear();
   }).catch(err => err.message);
 }
 const sendDraftMessage = () => {
 const value = document.cookie.split(';')
 const newValue = value[0].split('=');
-const token = newValue[1];  
-const msgId = localStorage.getItem('existingDraftId');
+const token = newValue[1];
 const userInfo = {
   email: to.value,
   subject: subject.value, 
@@ -138,19 +145,18 @@ const option = {
       }),
     body: JSON.stringify(userInfo) 
 }
-fetch(`http://localhost:5000/api/v2/messages/${msgId}/draft`, option)
+fetch(`http://localhost:5000/api/v2/messages/${draftId}/draft`, option)
 .then((response) => {
   return response.json();
 })
 .then((data) => {
-  localStorage.removeItem('existingDraftId')
-  success.innerText = 'Message Saved';
+localStorage.clear();
 }).catch(err => err.message);
 }
 
 window.onload = () => {
     if(localStorage.getItem('existingDraftId')){
-      const msgId = localStorage.getItem('existingDraftId');
+      localStorage.clear();
       const value = document.cookie.split(';')
       const newValue = value[0].split('=');
       const token = newValue[1];
@@ -162,7 +168,7 @@ window.onload = () => {
             'Authorization': token,
             })
       }
-      fetch(`http://localhost:5000/api/v2/messages/${msgId}/draft`, retrieveData)
+      fetch(`http://localhost:5000/api/v2/messages/${draftId}/draft`, retrieveData)
       .then((response) => {
         return response.json();
       })
@@ -170,16 +176,8 @@ window.onload = () => {
        to.value = data.data.email;
        subject.value = data.data.subject;
        message.value = data.data.message;
-       localStorage.setItem('messageType',data.data.message_type)
+       draft.name = 'saveDraft';
       }).catch(err => err.message);
-
-  if (event.target.name == 'sent' &&  localStorage.getItem('existingDraftId')){ 
-    sent.addEventListener('click', sendDraftMessage);
-  }
-  if (localStorage.getItem('messageType') == 'draft' &&  localStorage.getItem('existingDraftId')){ 
-    draft.addEventListener('click', saveDraftAgain);
-  }
-  
 }
 }
 

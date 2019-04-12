@@ -65,7 +65,6 @@ window.onload = () => {
   const newValue = value[0].split('=');
   const token = newValue[1];
   const grpId = localStorage.getItem('groupId')
-  console.log(grpId);
   fetch(`http://localhost:5000/api/v2/groups/${grpId}/messages`,{
     method: 'GET',
     headers: new Headers({
@@ -75,7 +74,7 @@ window.onload = () => {
 })
   .then((response) => {
     return response.json();
-  }).then((data) => {console.log(data);
+  }).then((data) => {
     msg = data.data
     msg.forEach((element) =>  {
     createElements(element);

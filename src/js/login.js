@@ -24,7 +24,6 @@ const loginUser = (event) => {
     })
     .then((data) => {
         const result = data;
-        console.log(result);
         if (result.status == 400 || result.status == 404){
             error.style.display = "block";
             setTimeout(closeErrorMessage,3000);
@@ -35,7 +34,7 @@ const loginUser = (event) => {
         document.cookie=`token=${result.data.token}`; 
         const value = document.cookie.split(';')
         const newValue = value[0].split('=');
-        const token = newValue[1];console.log(token);
+        const token = newValue[1];
         if(token){
         window.location.href = '../html/inbox.html';
         }

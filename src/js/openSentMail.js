@@ -77,7 +77,7 @@ window.onload = () => {
     .then((response) => {
         return response.json();
     })
-    .then((data) => {console.log(data.data);
+    .then((data) => {
         createElements(data.data);
       }).catch(err => err.message);
 }
