@@ -98,7 +98,7 @@ const deleteMail = (event) => {
       success.style.display = "block";
       success.innerText = 'Message Deleted';
       setTimeout(closeSuccessMessage,4000);
-      window.location.href = '../html/draft.html'
+      window.location.href = '../html/sentmail.html'
       }
     });
   }

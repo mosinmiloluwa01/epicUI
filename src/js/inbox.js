@@ -5,6 +5,7 @@ const token = newValue[1];
 let main = document.getElementById("main");
 let content = document.getElementById("content");
 let success = document.getElementById("success");
+let profileButton = document.getElementById("profileButton");
 // for the responsive side bar
 function openNav() {
     document.getElementById("responsive-sidebar").style.width = "250px";
@@ -111,3 +112,46 @@ window.onload = () => {
     });
   }).catch(err => err.message);
 }
+
+/* Set the width of the side navigation to 250px */
+function profileNav() {
+  document.getElementById("profilenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeProfileNav() {
+  document.getElementById("profilenav").style.width = "0";
+}
+
+const uploadImage = () => {
+let imageUrl; 
+const myWidget = cloudinary.createUploadWidget({
+  cloudName: 'dpsfuzuin', 
+  uploadPreset: 'kngcj4s1'}, (error, result) => { 
+    if (!error && result && result.event === "success") { 
+      console.log('Done! Here is the image info: ', result.info.url);
+      imageUrl =  result.info.url;
+      const profile = {
+        image: imageUrl,
+      };
+        fetch(`http://localhost:5000/api/v2/auth/users/upload`,{
+            method: 'PATCH',
+            headers: new Headers({
+              'content-type': 'application/json',
+              'Authorization': token,
+            }),
+            body: JSON.stringify(profile)
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+          }).catch(err => err.message);
+    }
+  },
+);
+
+myWidget.open();
+}
+
+profileButton.addEventListener('click', uploadImage, false);

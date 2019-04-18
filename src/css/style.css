@@ -25,6 +25,70 @@ header a{
   text-decoration: none;
   font-size: 1.25rem;
 }
+
+.card {
+  box-shadow: 0 4px 8px 0 ;
+  background-color: #ccc;
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.cardbutton {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: black;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.carda {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.cardbutton:hover, .carda:hover {
+  opacity: 0.7;
+}
+
+
+.profilenav {
+  height: 80%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  float: left;
+  background-color: rgba(0,0,0,0.3); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  overflow-y: hidden;
+  padding-top: 40px; /* Place content 60px from the top */
+  margin-top: 50px;
+  margin-left: 600px;
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.profilenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: white;
+}
+
 .invalid {
   display: none;
   margin: 10px auto 0;
@@ -566,4 +630,8 @@ input[type=submit] {
 		min-width: 15.5rem;
 	}
 
+}
+@media screen and (max-height: 450px) {
+  .profilenav {padding-top: 15px;}
+  .profilenav a {font-size: 18px;}
 }
