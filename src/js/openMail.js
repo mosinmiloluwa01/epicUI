@@ -1,8 +1,6 @@
 let main = document.getElementById("main");
 let contentInner = document.getElementById("contentInner");
 
-
-
 const value = document.cookie.split(';')
 const newValue = value[0].split('=');
 const token = newValue[1];
@@ -65,7 +63,7 @@ const createElements = (elements) => {
 window.onload = () => {
     const msg = localStorage.getItem("messageId");
     const msgId = parseInt(msg);
-    fetch(`http://localhost:5000/api/v2/messages/${msgId}`,{
+    fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/messages/${msgId}`,{
         method: 'GET',
         headers: new Headers({
           'content-type': 'application/json',

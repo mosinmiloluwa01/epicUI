@@ -62,7 +62,7 @@ const deleteGroup = (event) => {
   event.stopPropagation();
   // pick the target id from clickin the delete icon
   const grpId = event.target.id;
-  fetch(`http://localhost:5000/api/v2/groups/${grpId}`,{
+  fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/groups/${grpId}`,{
     method: 'DELETE',
     headers: new Headers({
       'content-type': 'application/json',
@@ -84,7 +84,7 @@ const deleteGroup = (event) => {
 }
 
 window.onload = () => {
-  fetch('http://localhost:5000/api/v2/groups',{
+  fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/groups',{
     method: 'GET',
     headers: new Headers({
       'content-type': 'application/json',

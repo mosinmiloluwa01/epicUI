@@ -12,7 +12,7 @@ window.onload = () => {
     const newValue = value[0].split('=');
     const token = newValue[1];
     const grpId = localStorage.getItem('grpId');
-    fetch(`http://localhost:5000/api/v2/groups/${grpId}`,{
+    fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/groups/${grpId}`,{
       method: 'GET',
       headers: new Headers({
         'content-type': 'application/json',

@@ -37,7 +37,7 @@ const signupUser = (event) => {
         inputError[3].style.display="block"
       }
   }
-  fetch('http://localhost:5000/api/v2/auth/signup', {
+  fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/auth/signup', {
     method:'POST',
     headers: new Headers({
         'content-type': 'application/json',

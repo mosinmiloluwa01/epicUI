@@ -67,7 +67,7 @@ const createElements = (elements) => {
 window.onload = () => {
     const msg = localStorage.getItem("messageId");
     const msgId = parseInt(msg);
-    fetch(`http://localhost:5000/api/v2/messages/${msgId}/sent`,{
+    fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/messages/${msgId}/sent`,{
         method: 'GET',
         headers: new Headers({
           'content-type': 'application/json',

@@ -6,8 +6,8 @@ let main = document.getElementById("main");
 let content = document.getElementById("content");
 let success = document.getElementById("success");
 let groupCompose = document.getElementById("grpcompose");
-
-const createElements = (elements) => {
+console.log(groupCompose);
+const createElements = (elements) => {console.log('groupCompose');
   const row = document.createElement("div");
   const column1 = document.createElement("div");
   const useremail = document.createElement("p");
@@ -17,7 +17,7 @@ const createElements = (elements) => {
   const { id, group_email, email, user_ids } = elements;
   useremail.innerText = email;
   
-const saveEmail = () => {
+const saveEmail = () => {console.log('just work');
       localStorage.setItem('groupEmail', group_email);
       window.location.href = '../html/groupcomposemail.html';
  }
@@ -60,7 +60,7 @@ const deleteUser = () => {
   // pick the target id from clickin the delete icon
   const userId = event.target.id;
   const grpId = localStorage.getItem('groupId');
-  fetch(`http://localhost:5000/api/v2/groups/${grpId}/user/${userId}`,{
+  fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/groups/${grpId}/user/${userId}`,{
     method: 'DELETE',
     headers: new Headers({
       'content-type': 'application/json',
@@ -80,7 +80,7 @@ const deleteUser = () => {
 
 window.onload = () => {
   const grpId = localStorage.getItem('groupId');
-  fetch(`http://localhost:5000/api/v2/groups/${grpId}/users`,{
+  fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/groups/${grpId}/users`,{
     method: 'GET',
     headers: new Headers({
       'content-type': 'application/json',
