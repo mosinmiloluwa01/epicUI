@@ -4,23 +4,27 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>EPIC Mail | Inbox</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-  <header>
-  <a href="login.html">Logout</a>
-  <a href="#" class="epic-title">EPIC Mail</a>
-  </header>
-
-  <div id="responsive-sidebar" class="rsidebar">
-      <a href="javascript:void(0)" class="rclosebtn" onclick="closeNav()">×</a>
-      <a href="composemail.html" ><img src="../img/compose.png">Compose</a>
-      <a href="inbox.html"><img src="../img/inbox.png"> Inbox</a>
-      <a href="sentmail.html"><img src="../img/sent.png"> Sent</a>
-      <a href="draft.html"><img src="../img/draft.png"> Draft</a>
-      <a href="group.html" ><img src="../img/compose.png">Groups</a>
-    </div>
-<div class="content" id="main">
+    <header>
+        <a href="#" class="epic-title">EPIC Mail</a>
+        <div class="nav">
+            <a href="profile.html" class="navlink">profile</a>
+            <a href="#" onclick="logout()" class="navlink">logout</a>
+        </div>
+    </header>
+<div class="container">
+  <div id="responsive-sidebar" class="rsidebar">    
+    <a href="javascript:void(0)" class="rclosebtn" onclick="closeNav()">×</a>
+    <a href="composemail.html" class="sidebarlink" ><i class="fas fa-plus sidebaricons"></i> Compose</a>
+    <a href="inbox.html" class="sidebarlink"><i class="fas fa-inbox sidebaricons"></i> Inbox</a>
+    <a href="sentmail.html" class="sidebarlink"><i class="fas fa-paper-plane sidebaricons"></i> Sent</a>
+    <a href="draft.html" class="sidebarlink"><i class="fas fa-pencil-alt sidebaricons"></i> Draft</a>
+    <a href="group.html" class="sidebarlink active"><i class="fas fa-users sidebaricons"></i> Groups</a>
+  </div>
+  <div class="content" id="main">
     <button class="ropenbtn" onclick="openNav()">☰</button>
     <div class="row">
       <h1>Add User</h1>
@@ -35,14 +39,14 @@
       <p class="error"></p>
     </div>
     <div class="row">
-      <input type="submit" value="Add User" name="adduser" class="margin16-left">
+      <input type="submit" value="Add User" name="adduser" class="margin16-left" style="background-color: teal;">
     </div>
   </form>
-</div>
+  </div>
   
         
 </div>
-
+<div class="modal" id="modal"></div>
 <script type="text/javascript" src="../js/addUserToGroup.js"></script>
 </body>
 </html>

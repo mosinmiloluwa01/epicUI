@@ -12,7 +12,7 @@ const loginUser = (event) => {
     const closeErrorMessage = () => {
         error.style.display = "none";
     }
-    fetch('http://localhost:5000/api/v2/auth/login', {
+    fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/auth/login', {
         method:'POST',
         headers: new Headers({
             'content-type': 'application/json',

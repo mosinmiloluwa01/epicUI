@@ -18,7 +18,7 @@ const createGroup = (event) => {
 const value = document.cookie.split(';')
 const newValue = value[0].split('=');
 const token = newValue[1];
-fetch('http://localhost:5000/api/v2/groups', {
+fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/groups', {
     method:'POST',
     headers: new Headers({
         'content-type': 'application/json',
@@ -83,13 +83,13 @@ group.addEventListener('submit', createGroup)
 
 
 
-// for the responsive side bar
-function openNav() {
-    document.getElementById("responsive-sidebar").style.width = "250px";
-    main.style.marginLeft = "250px";
-  }
+// // for the responsive side bar
+// function openNav() {
+//     document.getElementById("responsive-sidebar").style.width = "250px";
+//     main.style.marginLeft = "250px";
+//   }
   
-  function closeNav() {
-    document.getElementById("responsive-sidebar").style.width = "0";
-    main.style.marginLeft= "0";
-  }
+//   function closeNav() {
+//     document.getElementById("responsive-sidebar").style.width = "0";
+//     main.style.marginLeft= "0";
+//   }

@@ -48,7 +48,7 @@ window.onload = () => {
   const value = document.cookie.split(';')
   const newValue = value[0].split('=');
   const token = newValue[1];
-  fetch('http://localhost:5000/api/v2/messages/draft',{
+  fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/messages/draft',{
     method: 'GET',
     headers: new Headers({
       'content-type': 'application/json',
@@ -80,7 +80,7 @@ const deleteMail = (event) => {
   const newValue = value[0].split('=');
   const token = newValue[1];
   const msgId = event.target.id;
-  fetch(`http://localhost:5000/api/v2/messages/draft/${msgId}`,{
+  fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/messages/draft/${msgId}`,{
     method: 'DELETE',
     headers: new Headers({
       'content-type': 'application/json',

@@ -44,7 +44,7 @@ const showErrors = (errors) => {
 const value = document.cookie.split(';')
 const newValue = value[0].split('=');
 const token = newValue[1];
-fetch('http://localhost:5000/api/v2/messages', {
+fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/messages', {
     method:'POST',
     headers: new Headers({
         'content-type': 'application/json',
@@ -116,7 +116,7 @@ const token = newValue[1];
       body: JSON.stringify(userInfo) 
   }
   
-  fetch(`http://localhost:5000/api/v2/messages/${draftId}/draft`, option)
+  fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/messages/${draftId}/draft`, option)
   .then((response) => {
     return response.json();
   })
@@ -145,7 +145,7 @@ const option = {
       }),
     body: JSON.stringify(userInfo) 
 }
-fetch(`http://localhost:5000/api/v2/messages/${draftId}/draft`, option)
+fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/messages/${draftId}/draft`, option)
 .then((response) => {
   return response.json();
 })
@@ -168,7 +168,7 @@ window.onload = () => {
             'Authorization': token,
             })
       }
-      fetch(`http://localhost:5000/api/v2/messages/${draftId}/draft`, retrieveData)
+      fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/messages/${draftId}/draft`, retrieveData)
       .then((response) => {
         return response.json();
       })

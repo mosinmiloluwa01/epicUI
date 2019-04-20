@@ -17,26 +17,31 @@
     </header>
 
 <div class="container">
-    <div id="responsive-sidebar" class="rsidebar">
+  <div id="responsive-sidebar" class="rsidebar">
     <a href="javascript:void(0)" class="rclosebtn" onclick="closeNav()">×</a>
     <a href="composemail.html" class="sidebarlink" ><i class="fas fa-plus sidebaricons"></i> Compose</a>
     <a href="inbox.html" class="sidebarlink"><i class="fas fa-inbox sidebaricons"></i> Inbox</a>
     <a href="sentmail.html" class="sidebarlink"><i class="fas fa-paper-plane sidebaricons"></i> Sent</a>
     <a href="draft.html" class="sidebarlink"><i class="fas fa-pencil-alt sidebaricons"></i> Draft</a>
     <a href="group.html" class="sidebarlink active"><i class="fas fa-users sidebaricons"></i> Groups</a>
-    </div>
-    <div class="content" id="main">
-    <div class="content-inner" id="content">
-    <button class="ropenbtn" onclick="openNav()">☰</button>
-    <div class="success" id="success"></div>
-    <h1 id="groupname"></h1>
-    <button class="groupbutton" id="grpcompose">
-          <span class="span"><i class="fas fa-plus"></i></span> Send Message</button>       
   </div>
-    </div>      
+  
+  <div class="content" id="main">
+  <div class="content-inner" id="content">
+    <button class="ropenbtn" onclick="openNav()">☰</button>
+<h1>User Profile</h1>
+<div class="card">
+    <i class="fas fa-camera-retro cardIcon"></i>
+    <div class="innercard" id="profileImage"></div>
+    <h3 class="title" id="profileName"></h3>
+    <button class="cardbutton" id="profileButton">Change Picture</button>
+</div>
+</div>
+  </div>      
 </div>
 <div class="modal" id="modal"></div>
-<script type="text/javascript" src="../js/groupInfo.js"></script>
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+<script type="text/javascript" src="../js/profile.js"></script>
 <script type="text/javascript" src="../js/app.js"></script>
 </body>
 </html>
