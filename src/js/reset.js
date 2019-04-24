@@ -3,7 +3,8 @@ const newValue = value[0].split('=');
 const token = newValue[1];
 
 const {resetPassword} = document.forms;
-const {password, confirmPassword, resetPassword} = resetPassword.elements;
+const {password, confirmpassword, resetPwd} = resetPassword.elements;
+
 
 let error = document.getElementById("error");
 let inputError = document.getElementsByClassName("error");
@@ -31,12 +32,14 @@ const clearError = (event) => {
     event.target.parentElement.nextElementSibling.style.display = "none";
   }
 
-  const resetPwd = (event) => {
+
+  const resetUserPassword = (event) => {console.log(event.target.baseURI);
+
     event.preventDefault();
 
     const formInfo = {
         password: password.value,
-        confirmpassword: confirmPassword.value,
+        confirmpassword: confirmpassword.value,
     }
 
     fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/auth/users/resetPassword', {
@@ -70,4 +73,5 @@ const clearError = (event) => {
 
 password.addEventListener('focus', clearError);
 confirmpassword.addEventListener('focus', clearError);
-recoverPassword.addEventListener('click', resetPwd);
+resetPwd.addEventListener('click', resetUserPassword);
+
