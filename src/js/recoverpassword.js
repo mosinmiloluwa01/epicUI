@@ -3,7 +3,7 @@ const newValue = value[0].split('=');
 const token = newValue[1];
 
 const {resetPassword} = document.forms;
-const {password, confirmpassword, resetPwd} = resetPassword.elements;
+const {email, recoverPassword} = resetPassword.elements;
 
 let error = document.getElementById("error");
 let inputError = document.getElementsByClassName("error");
@@ -17,29 +17,24 @@ const closeSuccessMessage = () => {
 }
 
 const showErrors = (errors) => {
-    if(errors.password){
-     inputError[0].innerText = errors.password[0];
+    if(errors.email){
+     inputError[0].innerText = errors.email[0];
        inputError[0].style.display="block"
      }
-     if(errors.confirmpassword){
-        inputError[1].innerText = errors.confirmpassword[0];
-          inputError[1].style.display="block"
-        }
 } 
 
 const clearError = (event) => {
     event.target.parentElement.nextElementSibling.style.display = "none";
   }
 
-  const resetUserPassword = (event) => {console.log(event.target.baseURI);
+const sendEmail = (event) => {console.log(event.target.baseURI);
     event.preventDefault();
 
     const formInfo = {
-        password: password.value,
-        confirmpassword: confirmpassword.value,
+        email: email.value,
     }
 
-    fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/auth/users/resetPassword', {
+    fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/auth/users/recoverPassword', {
     method:'POST',
     headers: new Headers({
         'content-type': 'application/json',
@@ -68,6 +63,5 @@ const clearError = (event) => {
   })
 }
 
-password.addEventListener('focus', clearError);
-confirmpassword.addEventListener('focus', clearError);
-resetPwd.addEventListener('click', resetUserPassword);
+email.addEventListener('focus', clearError);
+recoverPassword.addEventListener('click', sendEmail);
