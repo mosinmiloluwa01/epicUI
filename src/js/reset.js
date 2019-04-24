@@ -5,6 +5,7 @@ const token = newValue[1];
 const {resetPassword} = document.forms;
 const {password, confirmpassword, resetPwd} = resetPassword.elements;
 
+
 let error = document.getElementById("error");
 let inputError = document.getElementsByClassName("error");
 let success = document.getElementById("success");
@@ -31,7 +32,9 @@ const clearError = (event) => {
     event.target.parentElement.nextElementSibling.style.display = "none";
   }
 
+
   const resetUserPassword = (event) => {console.log(event.target.baseURI);
+
     event.preventDefault();
 
     const formInfo = {
@@ -71,3 +74,4 @@ const clearError = (event) => {
 password.addEventListener('focus', clearError);
 confirmpassword.addEventListener('focus', clearError);
 resetPwd.addEventListener('click', resetUserPassword);
+
