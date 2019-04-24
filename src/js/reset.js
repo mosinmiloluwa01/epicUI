@@ -35,6 +35,8 @@ const clearError = (event) => {
 
   const resetUserPassword = (event) => {console.log(event.target.baseURI);
 
+    const value = event.target.baseURI.split('?');
+    const token = value[1];
     event.preventDefault();
 
     const formInfo = {
@@ -42,7 +44,7 @@ const clearError = (event) => {
         confirmpassword: confirmpassword.value,
     }
 
-    fetch('https://mosinmiloluwa-app.herokuapp.com/api/v2/auth/users/resetPassword', {
+    fetch(`https://mosinmiloluwa-app.herokuapp.com/api/v2/auth/users/${token}/resetPassword`, {
     method:'POST',
     headers: new Headers({
         'content-type': 'application/json',
