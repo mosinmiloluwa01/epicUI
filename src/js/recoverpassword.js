@@ -27,7 +27,7 @@ const clearError = (event) => {
     event.target.parentElement.nextElementSibling.style.display = "none";
   }
 
-const sendEmail = (event) => {console.log(event.target.baseURI);
+const sendEmail = (event) => {
     event.preventDefault();
 
     const formInfo = {

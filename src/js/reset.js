@@ -68,6 +68,7 @@ const clearError = (event) => {
     if (result.status == 200){
     success.style.display = "block";
     success.innerText = result.message;
+    window.location.href = '../html/login.html';
     setTimeout(closeSuccessMessage,4000);
     }
   })
