@@ -42,6 +42,6 @@ http://localhost:6000/api-docs
 https://mosinmiloluwa01.github.io/EPIC-Mail-Application/UI/html/login.html
 
 ## Heroku Link
-https://mosinmiloluwa-app.herokuapp.com/
+https://epic-mail-staging.herokuapp.com
 
 
